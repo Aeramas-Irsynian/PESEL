@@ -9,6 +9,7 @@ public class PeselLengthWrongException extends Exception {
         this.pesel = pesel;
     }
 
+    @Override
     public String toString() {
         return "Pesel {pesel=" + pesel +
                 ", peselSize=" + peselSize +

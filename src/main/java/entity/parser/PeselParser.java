@@ -12,7 +12,7 @@ public class PeselParser {
     }
 
     public static Integer parseYear(Integer[] peselConverted) {
-        Integer year = 1900 + (peselConverted[0] * 10) + peselConverted[1];
+        int year = 1900 + (peselConverted[0] * 10) + peselConverted[1];
         if (peselConverted[2] >= 2 && peselConverted[2] < 8) {
             year += (int) Math.floor(peselConverted[2] / 2.0) * 100;
         } else if (peselConverted[2] >= 8) {
@@ -35,7 +35,7 @@ public class PeselParser {
     }
 
     public static Integer parseCheckDigit(Integer[] peselConverted) {
-        Integer tempComputationDigit = 0;
+        int tempComputationDigit = 0;
         final Integer[] VALIDATORS = {1, 3, 7, 9, 1, 3, 7, 9, 1, 3};
 
         for (int i = 0; i < VALIDATORS.length; i++) {

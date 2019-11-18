@@ -1,4 +1,7 @@
 import entity.Pesel;
+import exception.PeselCheckDigitWrongException;
+import exception.PeselDateWrongException;
+import exception.PeselLengthWrongException;
 import service.PeselService;
 
 import java.util.ArrayList;
@@ -8,7 +11,7 @@ class Main {
     public static void main(String[] args) {
         PeselService peselService = PeselService.getInstance();
 
-        String[] peselToAdd = new String[11];
+        String[] peselToAdd = new String[10];
         peselToAdd[0] = "99990364949";
         peselToAdd[1] = "12346578912";
         peselToAdd[2] = "55887";
@@ -25,7 +28,7 @@ class Main {
         for (String pesel : peselToAdd) {
             try {
                 peselList.add(peselService.addPesel(pesel));
-            } catch (Exception exc) {
+            } catch (PeselCheckDigitWrongException | PeselDateWrongException | PeselLengthWrongException exc) {
                 System.out.println(exc.toString());
             }
         }
